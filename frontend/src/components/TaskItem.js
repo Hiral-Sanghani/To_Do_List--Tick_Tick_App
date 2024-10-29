@@ -1,11 +1,25 @@
 import React from "react";
+import useTaskStore from "../store/taskStore";
 
-const TaskItem = ({ task }) => (
-  <div className="p-4 border-b">
-    <h3>{task.title}</h3>
-    <p>{task.description}</p>
-    <p>{task.isRecurring ? "Recurring" : "One-time"}</p>
-  </div>
-);
+const TaskItem = ({ task }) => {
+  const { deleteTask } = useTaskStore();
+
+  const handleDelete = async () => {
+    await deleteTask(task.id);
+  };
+
+  return (
+    <tr>
+      <td>{task.title}</td>
+      <td>{task.description}</td>
+      <td className={task.isRecurring ? "recurring" : "one-time"}>
+        {task.isRecurring ? "Yes" : "No"}
+      </td>
+      <td>
+        <button onClick={handleDelete}>Delete</button>
+      </td>
+    </tr>
+  );
+};
 
 export default TaskItem;
