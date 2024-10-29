@@ -30,7 +30,9 @@ const Index = () => {
 
   return (
     <div>
-      <h1>To-Do List</h1>
+      <h1>To-Do List:</h1>
+      <h4>Application to add or delete daily tasks</h4>
+
       <TaskList />
       <AddTaskForm />
     </div>
