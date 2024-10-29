@@ -42,7 +42,7 @@ exports.updateTask = async (req, res) => {
   const { id } = req.params;
   const { title, description, isRecurring, recurrencePattern } = req.body;
   try {
-    const task = await task.findByPk(id);
+    const task = await Task.findByPk(id);
     if (task) {
       task.title = title || task.title;
       task.description = description || task.description;
